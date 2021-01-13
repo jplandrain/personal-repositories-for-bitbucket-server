@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Random;
@@ -19,7 +20,6 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
-import org.eclipse.jetty.util.UrlEncoded;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +66,7 @@ public class TestDataGenerator {
 	}
 
 	private Set<String> generateRandomNames(int number) {
-		Set<String> names = new HashSet<String>();
+		Set<String> names = new HashSet<>();
 		for (int i = 0; i < number; i++) {
 			names.add(createRandomName());
 		}
@@ -74,7 +74,7 @@ public class TestDataGenerator {
 	}
 
 	private Set<String> readFakeNamesFromFile() {
-		Set<String> names = new LinkedHashSet<String>();
+		Set<String> names = new LinkedHashSet<>();
 		try {
 			System.out.println(new File(".").getAbsolutePath());
 			Scanner scanner = new Scanner(new File("src/test/resources/FakeNames.csv"));
@@ -91,9 +91,15 @@ public class TestDataGenerator {
 
 	private void createUser(String name) {
 		String slug = slugifyName(name);
-		HttpPost post = new HttpPost(REST_API_URL + "admin/users?name=" + slug
-				+ "&password=" + slug + "&displayName=" + UrlEncoded.encodeString(name)
-				+ "&emailAddress=" + slug + "@networkedassets.org");
+		HttpPost post = null;
+		try {
+			post = new HttpPost(REST_API_URL + "admin/users?name=" + slug
+					+ "&password=" + slug + "&displayName=" + URLEncoder.encode(name, java.nio.charset.StandardCharsets.UTF_8.toString())
+					+ "&emailAddress=" + slug + "@networkedassets.org");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		makePostAsAdmin(post);
 	}
 	
@@ -128,7 +134,7 @@ public class TestDataGenerator {
 		// only forking works with rest API
 		HttpPost post = new HttpPost(REST_API_URL
 				+ "projects/PROJECT_1/repos/rep_1");
-		StringEntity requestEntity = null;
+		StringEntity requestEntity;
 		try {
 			requestEntity = new StringEntity("{\"name\": \"" + repoName
 					+ "\"}");
