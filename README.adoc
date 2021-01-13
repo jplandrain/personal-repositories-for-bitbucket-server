@@ -1,0 +1,35 @@
+= Personal Repositories for Bitbucket Server
+
+== Overview
+
+Personal Repositories for Bitbucket Server is a plugin for Atlassian Bitbucket Server that helps you organise personal repositories in your Git instance.
+Personal repositories are a useful tool, but if you are responsible for your company’s repository, especially if your user pool frequently changes, for example, because freelance developers come and go, you may not want this for everybody.  
+Private repositories are not that easy to control from the administrator’s perspective: It is difficult to monitor how much space each user consumes for his personal repositories or to clean-up abandoned repositories of users who are no longer part of the organization. 
+This can lead to large amounts of wasted disk space and unnecessarily large backup files on your Bitbucket server.
+  
+* http://opensource.networkedassets.com/misc/per_repo_for_bb.html[Plugin Details]
+* http://opensource.networkedassets.com/misc/pdf/prfbs-user-guide.pdf[User Guide] (PDF)
+* http://opensource.networkedassets.com/misc/pdf/prfbs-administration-guide.pdf[Administration Guide] (PDF)
+
+== Installation
+
+Until version 2.0.0 this plugin was available in the Atlassian Marketplace and was installed directly in Bitbucket Server using the Universal Plugin Manager (UPM).
+However, starting with the version 1.0.10 for BitBucket 4.0.3, its development wasn't active anymore. So it hadn't been updated and wasn't working anymore with the more recent versions of Bitbucket Server.
+
+This fork of the initial project is meant to release versions that are compatible with newer Bitbucket releases.
+Manual installation into your Bitbucket server must be achieved. The release files can be found on this https://github.com/jplandrain/personal-repositories-for-bitbucket-server/releases[GitHub]
+
+== Releases
+
+=== 2.x.x
+
+The 2.x.x versions are for Bitbucket Server &gt;= 7.8.0
+
+==== 2.0.0 (2021-01-xx)
+
+This version includes the following changes:
+
+* Upgrade to Bitbucket Server 7.8.0
+
+
+

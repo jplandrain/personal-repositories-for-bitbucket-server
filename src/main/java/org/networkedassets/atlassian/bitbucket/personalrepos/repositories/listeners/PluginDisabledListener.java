@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.atlassian.event.api.EventListener;
 import com.atlassian.event.api.EventPublisher;
-import com.atlassian.plugin.event.events.BeforePluginDisabledEvent;
+import com.atlassian.plugin.event.events.PluginDisabledEvent;
 import com.atlassian.bitbucket.auth.AuthenticationContext;
 import com.atlassian.bitbucket.user.SecurityService;
 
@@ -49,7 +49,7 @@ public class PluginDisabledListener {
 	}
 
 	@EventListener
-	public void onPluginDisabledEvent(BeforePluginDisabledEvent event) {
+	public void onPluginDisabledEvent(PluginDisabledEvent event) {
 		if (licenseManager.isLicenseInvalid()) {
 			return;
 		}
