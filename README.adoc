@@ -31,5 +31,35 @@ This version includes the following changes:
 
 * Upgrade to Bitbucket Server 7.8.0
 
+== Contribute
+
+Install the Atlassian SDK, following the instructions found
+https://developer.atlassian.com/server/framework/atlassian-sdk/set-up-the-atlassian-plugin-sdk-and-build-a-project/[here].
+
+The sdk comes with a preconfigured _maven_, with a settings file pointing to
+atlassian repositories, either use this maven (`atlas-mvn`) directly, or within
+your IDE, you can tell to use the atlassian shipped maven distribution here
+`<atlassian-plugin-sdk-home>/apache-maven-<mvn version>`. For more
+information, read https://developer.atlassian.com/server/framework/atlassian-sdk/working-with-maven/[Atlassian SDK guide]
+to work with maven.
+
+In IntelliJ, it's possible to change the maven home here:
+
+_Preferences | Build, Execution, Deployment | Build Tools | Maven_
+
+If set correctly, the project should be imported without any issue.
+
+* Run bitbucket locally with `atlas-run --product bitbucket`
+* Navigate to `http://localhost:7990/bitbucket`
+* Login with `admin` / `admin`
+
+Also take a look at these documentations from Atlassian SDK
+
+* https://developer.atlassian.com/server/framework/atlassian-sdk/set-up-the-atlassian-plugin-sdk-and-build-a-project/
+* https://developer.atlassian.com/server/framework/atlassian-sdk/frequently-used-commands/
+* https://developer.atlassian.com/server/framework/atlassian-sdk/automatic-plugin-reinstallation-with-quickreload/[Automatic plugin reinstallation with QuickReload]
+* https://developer.atlassian.com/server/framework/atlassian-sdk/modify-the-plugin-using-quickreload/
+
+
 
 
